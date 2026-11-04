@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JeaDas.Insights</title>
 <meta name="theme-color" content="#09090b">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2309090b'/%3E%3Cpath d='M9 22V10h5a4 4 0 010 8h-2' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2309090b'/%3E%3Cpath d='M9 22V10h5a4 4 0 010 8h-2' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/shell.css?v=2.0.0">
+
+<!-- 1. EL RECURSO GLOBAL VA AQUÍ (En el HEAD): Captura el renderizado visual antes que nada -->
+<script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
@@ -15,19 +18,13 @@
 <div id="toasts" role="status" aria-live="polite"></div>
 
 <!-- ========================================================== -->
-<!-- CARGA DE RECURSOS Y SCRIPTS GLOBALES -->
+<!-- SCRIPTS DE LA SUITE (Con DEFER obligatorio) -->
 <!-- ========================================================== -->
-
-<!-- 1. Recurso global desde GitHub (Carga primero para pintar la bienvenida de inmediato) -->
-<script src="https://fastly.jsdelivr.net"></script>
-
-<!-- 2. Variables de entorno e inicialización del Core Local -->
 <script>window.JDI_V = '2.0.0'</script>
-<script src="config.js?v=2.0.0"></script>
-<script src="assets/jdi-theme.js?v=2.0.0"></script>
-
-<!-- 3. Lógica de la aplicación cliente (Donde modificamos la función salir) -->
-<script src="js/shell.js?v=2.0.0"></script>
+<!-- El atributo defer garantiza que esperarán a que el Splash termine su ciclo inicial -->
+<script src="config.js?v=2.0.0" defer></script>
+<script src="assets/jdi-theme.js?v=2.0.0" defer></script>
+<script src="js/shell.js?v=2.0.0" defer></script>
 
 </body>
 </html>
