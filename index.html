@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2309090b'/%3E%3Cpath d='M9 22V10h5a4 4 0 010 8h-2' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/shell.css?v=2.0.0">
 
-<!-- 1. EL RECURSO GLOBAL VA AQUÍ (En el HEAD): Captura el renderizado visual antes que nada -->
+<!-- 1. El recurso global inyecta la animación al instante -->
 <script src="https://jsdelivr.net"></script>
 </head>
 <body>
@@ -18,13 +18,27 @@
 <div id="toasts" role="status" aria-live="polite"></div>
 
 <!-- ========================================================== -->
-<!-- SCRIPTS DE LA SUITE (Con DEFER obligatorio) -->
+<!-- CONTROL DE RETRASO CRÍTICO -->
 <!-- ========================================================== -->
-<script>window.JDI_V = '2.0.0'</script>
-<!-- El atributo defer garantiza que esperarán a que el Splash termine su ciclo inicial -->
-<script src="config.js?v=2.0.0" defer></script>
-<script src="assets/jdi-theme.js?v=2.0.0" defer></script>
-<script src="js/shell.js?v=2.0.0" defer></script>
+<script>
+  window.JDI_V = '2.0.0';
+
+  // Creamos una función que inyectará tus scripts locales de forma dinámica
+  function cargarAplicacionLocal() {
+    const scripts = ['config.js?v=2.0.0', 'assets/jdi-theme.js?v=2.0.0', 'js/shell.js?v=2.0.0'];
+    
+    scripts.forEach(src => {
+        const el = document.createElement('script');
+        el.src = src;
+        el.async = false; // Mantiene el orden estricto de carga de tu suite
+        document.body.appendChild(el);
+    });
+  }
+
+  // ⏱️ EL TRUCO: Le damos 2.3 segundos de exclusividad absoluta a la animación del Splash.
+  // Mientras tanto, la lógica del Login queda congelada y no puede pisar la vista.
+  setTimeout(cargarAplicacionLocal, 2300);
+</script>
 
 </body>
 </html>
