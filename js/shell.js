@@ -142,6 +142,7 @@
     if (t) post({ action: 'logout', token: t }).catch(function () { /* ya vencida */ });
     store.set('jdi.token', null); ST.token = null; ST.me = null; ST.mod = null; ST.menu = false;
     window.JDITheme.aplicar(document.documentElement);
+    mostrarDespedida('index.html');
     document.title = 'JeaDas.Insights'; pantallaLogin('');
   }
 
