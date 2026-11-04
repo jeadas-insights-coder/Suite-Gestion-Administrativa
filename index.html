@@ -9,13 +9,25 @@
 <link rel="stylesheet" href="css/shell.css?v=2.0.0">
 </head>
 <body>
-<script src="https://jsdelivr.net"></script>
+
 <div id="bar"></div>
 <div id="root"></div>
 <div id="toasts" role="status" aria-live="polite"></div>
+
+<!-- ========================================================== -->
+<!-- CARGA DE RECURSOS Y SCRIPTS GLOBALES -->
+<!-- ========================================================== -->
+
+<!-- 1. Recurso global desde GitHub (Carga primero para pintar la bienvenida de inmediato) -->
+<script src="https://jsdelivr.net"></script>
+
+<!-- 2. Variables de entorno e inicialización del Core Local -->
 <script>window.JDI_V = '2.0.0'</script>
 <script src="config.js?v=2.0.0"></script>
 <script src="assets/jdi-theme.js?v=2.0.0"></script>
+
+<!-- 3. Lógica de la aplicación cliente (Donde modificamos la función salir) -->
 <script src="js/shell.js?v=2.0.0"></script>
+
 </body>
 </html>
