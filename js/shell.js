@@ -137,13 +137,23 @@
     store.set('jdi.token', null); ST.token = null; ST.me = null; ST.mod = null;
     pantallaLogin('Su sesión venció. Ingrese nuevamente.');
   }
+
   function salir() {
     var t = ST.token;
     if (t) post({ action: 'logout', token: t }).catch(function () { /* ya vencida */ });
     store.set('jdi.token', null); ST.token = null; ST.me = null; ST.mod = null; ST.menu = false;
+    
     window.JDITheme.aplicar(document.documentElement);
-    mostrarDespedida('index.html');
-    document.title = 'JeaDas.Insights'; pantallaLogin('');
+    document.title = 'JeaDas.Insights'; 
+    
+    // MODIFICACIÓN: Llamamos a la animación de despedida antes de pasar al login
+    if (typeof mostrarDespedida === 'function') {
+        // Ejecuta la animación de salida hacia index.html
+        mostrarDespedida('index.html'); 
+    } else {
+        // Respaldo por si el script externo de GitHub no carga
+        pantallaLogin(''); 
+    }
   }
 
   /* Botón «ojo»: muestra la contraseña unos segundos y la vuelve a ocultar sola. */
