@@ -8,7 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2309090b'/%3E%3Cpath d='M9 22V10h5a4 4 0 010 8h-2' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/shell.css?v=2.0.0">
 
-<!-- 1. ESTILOS INTERNOS DEL SPLASH (Garantizan renderizado instantáneo) -->
+<!-- ========================================================== -->
+<!-- ANIMACIONES PURO CSS (Rendimiento por Hardware/GPU) -->
+<!-- ========================================================== -->
 <style>
     @keyframes splashCardEntrance {
         0% { transform: translateY(25px) scale(0.97); opacity: 0; }
@@ -28,24 +30,44 @@
         100% { transform: translate(30px, 20px) scale(1.1); }
     }
     
-    /* Clase de control para ocultar pantallas de carga de forma fluida */
-    .jdi-splash-oculto {
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none;
+    /* ⏱️ AUTO-OCULTADO PURAMENTE EN CSS (Dura 2.2s activo + 0.5s de desvanecimiento) */
+    @keyframes autoOcultarSplash {
+        0%, 80% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+
+    #splash-screen {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at center, #1C337E 0%, #13235A 100%);
+        z-index: 999999; display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        overflow: hidden;
+        /* Se oculta solo sin usar JS */
+        animation: autoOcultarSplash 2.7s ease forwards; 
+    }
+
+    /* Clase manual que usará la función mostrarDespedida() cuando salgas */
+    #splash-screen.forzar-despedida {
+        animation: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transition: opacity 0.4s ease;
     }
 </style>
 </head>
 <body style="margin: 0; padding: 0;">
 
 <!-- ========================================================== -->
-<!-- 2. INTERFAZ GRÁFICA DEL SPLASH (Ya cargada de forma nativa) -->
+<!-- SPLASH SCREEN NATIVO -->
 <!-- ========================================================== -->
-<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #1C337E 0%, #13235A 100%); z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; transition: opacity 0.5s ease, visibility 0.5s; overflow: hidden; opacity: 1; visibility: visible;">
-    
+<div id="splash-screen">
+    <!-- Efectos de Luces de Fondo de la máscara -->
     <div style="position: absolute; width: 350px; height: 350px; background: #19B9DF; filter: blur(140px); opacity: 0.12; top: 15%; left: 15%; animation: splashFloatGlow 6s ease-in-out infinite alternate;"></div>
     <div style="position: absolute; width: 400px; height: 400px; background: #8A3DA6; filter: blur(160px); opacity: 0.10; bottom: 15%; right: 15%; animation: splashFloatGlow 8s ease-in-out infinite alternate-reverse;"></div>
 
+    <!-- Tarjeta Central -->
     <div id="splash-card" style="position: relative; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 50px 70px; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); text-align: center; overflow: hidden; animation: splashCardEntrance 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
         <div style="position: absolute; top: -50%; left: -150%; width: 60%; height: 200%; background: linear-gradient(90deg, transparent, rgba(25, 185, 223, 0.2), rgba(138, 61, 166, 0.15), transparent); transform: rotate(30deg); animation: splashShineHover 2.5s ease-in-out infinite;"></div>
         
@@ -62,60 +84,49 @@
     </div>
 </div>
 
-<!-- Estructura original de tu aplicación -->
+<!-- Contenedores del ecosistema local de tu App -->
 <div id="bar"></div>
 <div id="root"></div>
 <div id="toasts" role="status" aria-live="polite"></div>
 
 <!-- ========================================================== -->
-<!-- 3. FUNCIONES DE CONTROL LOCALES (BIENVENIDA Y DESPEDIDA) -->
+<!-- ÚNICO SCRIPT DE PASO PARA LA DESPEDIDA -->
 <!-- ========================================================== -->
 <script>
     window.JDI_V = '2.0.0';
 
-    // Manejo automático del desvanecimiento de entrada
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const element = document.getElementById('splash-screen');
-            if (element) element.classList.add('jdi-splash-oculto');
-        }, 2200);
-    });
-
-    // Función global de Despedida invocada desde shell.js
+    // Esta función queda disponible para que tu shell.js la invoque al salir
     window.mostrarDespedida = function(urlRedireccion = 'index.html') {
         const screen = document.getElementById('splash-screen');
-        const card = document.getElementById('splash-card');
         const titulo = document.getElementById('splash-titulo');
         const mensaje = document.getElementById('splash-mensaje');
         const bar = document.getElementById('splash-progress-bar');
 
         if (!screen) return;
 
-        // 1. Modificar textos de la tarjeta para la despedida
+        // 1. Modificar visualmente la tarjeta para transformarla en Despedida
         if (titulo) titulo.innerHTML = '¡Hasta pronto!';
         if (mensaje) {
             mensaje.innerText = 'Que tengas una hermosa jornada';
             mensaje.style.color = '#19B9DF';
         }
-        
-        // 2. Modificar la barra de progreso para la despedida
         if (bar) {
             bar.style.width = '150px';
             bar.style.margin = '30px auto 0 auto';
             bar.innerHTML = `<div style="position: absolute; width: 100%; height: 100%; background: linear-gradient(90deg, #8A3DA6, #19B9DF); animation: splashLineLoad 1.8s linear forwards;"></div>`;
         }
 
-        // 3. Volver a mostrar el contenedor aplicando la transición inversa
-        screen.classList.remove('jdi-splash-oculto');
+        // 2. Forzar al CSS a mostrar la pantalla aplicando la clase manual
+        screen.classList.add('forzar-despedida');
 
-        // 4. Redirigir al terminar la animación
+        // 3. Redirigir al destino de cierre de sesión
         setTimeout(() => {
             window.location.href = urlRedireccion;
         }, 2200);
     };
 </script>
 
-<!-- Scripts de lógica de la aplicación -->
+<!-- Scripts de lógica de tu suite de gestión -->
 <script src="config.js?v=2.0.0"></script>
 <script src="assets/jdi-theme.js?v=2.0.0"></script>
 <script src="js/shell.js?v=2.0.0"></script>
