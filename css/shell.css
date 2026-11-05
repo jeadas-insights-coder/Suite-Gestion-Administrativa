@@ -199,3 +199,92 @@ html,body{overflow-x:hidden;max-width:100%}
 
 .pq{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;background:color-mix(in srgb,#E0A33E 22%,transparent);color:#F2C46D;border:1px solid color-mix(in srgb,#E0A33E 55%,transparent)}
 .menu .ver{padding:8px 14px 4px;border-top:1px solid var(--line,#26262c);margin-top:6px}
+
+
+/* ==========================================================
+   IDENTIDAD INSTITUCIONAL JEADAS.INSIGHTS
+   ========================================================== */
+
+.jdi-identity {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+
+}
+
+.jdi-identity-icon {
+
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    object-fit: contain;
+
+}
+
+.jdi-identity-text {
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    line-height: 1.2;
+
+}
+
+.jdi-identity-text strong {
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    color: var(--color-text-main);
+
+}
+
+.jdi-identity-text strong span {
+
+    color: var(--color-cyan);
+
+}
+
+.jdi-identity-text small {
+
+    font-size: .68rem;
+
+    color: var(--color-text-muted);
+
+    white-space: nowrap;
+
+}
+
+@media(max-width:560px) {
+
+    .jdi-identity-icon {
+
+        width: 30px;
+        height: 30px;
+
+        flex-basis: 30px;
+
+    }
+
+    .jdi-identity-text strong {
+
+        font-size: .88rem;
+
+    }
+
+    .jdi-identity-text small {
+
+        font-size: .6rem;
+
+    }
+
+}
