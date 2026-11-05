@@ -1,0 +1,293 @@
+
+/* ==========================================================
+   JEADAS.INSIGHTS
+   SISTEMA SPLASH RESPONSIVE
+   ========================================================== */
+
+:root {
+    --jdi-cyan: #19B9DF;
+    --jdi-blue: #214EC2;
+    --jdi-purple: #8A3DA6;
+    --jdi-background: #09090b;
+}
+
+/* ANIMACIONES */
+
+@keyframes splashCardEntrance {
+    0% {
+        transform: translateY(25px) scale(.97);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes splashShineHover {
+    0% {
+        left: -150%;
+        top: -50%;
+    }
+
+    50%, 100% {
+        left: 150%;
+        top: 50%;
+    }
+}
+
+@keyframes splashLineLoad {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes splashFloatGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(30px, 20px) scale(1.1);
+    }
+}
+
+@keyframes autoOcultarSplash {
+    0%, 80% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+/* PANTALLA PRINCIPAL */
+
+#splash-screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    box-sizing: border-box;
+    padding: clamp(14px, 4vw, 60px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1C337E 0%,
+            #13235A 100%
+        );
+
+    z-index: 999999;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+
+    animation: autoOcultarSplash 2.7s ease forwards;
+}
+
+/* TARJETA */
+
+#splash-card {
+    position: relative;
+
+    width: min(100%, 760px);
+
+    box-sizing: border-box;
+
+    padding:
+        clamp(22px, 5vw, 55px)
+        clamp(18px, 6vw, 70px);
+
+    border-radius: clamp(16px, 3vw, 26px);
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    animation:
+        splashCardEntrance
+        1s cubic-bezier(.25,1,.5,1)
+        forwards;
+}
+
+/* BRILLO DE TARJETA */
+
+#splash-card > div:first-child {
+    pointer-events: none;
+}
+
+/* TÍTULO */
+
+#splash-titulo {
+    color: #fff;
+
+    font-size: clamp(1.65rem, 6vw, 3.8rem);
+
+    font-weight: 900;
+
+    letter-spacing: clamp(1px, .5vw, 3px);
+
+    line-height: 1.15;
+
+    margin: 0;
+
+    overflow-wrap: anywhere;
+}
+
+/* MENSAJE */
+
+#splash-mensaje {
+    color: rgba(255,255,255,.7);
+
+    font-size: clamp(.85rem, 2.5vw, 1.2rem);
+
+    line-height: 1.5;
+
+    margin: 15px 0 0;
+
+    font-weight: 400;
+}
+
+/* PROGRESO */
+
+#splash-progress-bar {
+    width: min(100%, 420px);
+
+    height: 3px;
+
+    background: rgba(255,255,255,.06);
+
+    border-radius: 3px;
+
+    margin: 30px auto 0;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+/* MÓVILES */
+
+@media (max-width: 480px) {
+
+    #splash-screen {
+        padding: 16px;
+    }
+
+    #splash-card {
+        width: 100%;
+        padding: 28px 18px;
+    }
+
+}
+
+/* TABLETS */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+
+    #splash-card {
+        width: 85%;
+    }
+
+}
+
+/* COMPUTADORES */
+
+@media (min-width: 1025px) {
+
+    #splash-card {
+        width: min(75%, 760px);
+    }
+
+}
+
+/* TELEVISORES Y 4K */
+
+@media (min-width: 1920px) {
+
+    #splash-card {
+        width: min(65%, 1000px);
+    }
+
+    #splash-titulo {
+        font-size: clamp(3.5rem, 4vw, 5rem);
+    }
+
+    #splash-mensaje {
+        font-size: clamp(1.3rem, 1.5vw, 1.8rem);
+    }
+
+}
+
+/* PANTALLAS BAJAS */
+
+@media (max-height: 500px) {
+
+    #splash-screen {
+        padding: 10px;
+    }
+
+    #splash-card {
+        padding: 15px 25px;
+    }
+
+    #splash-mensaje {
+        margin-top: 8px;
+    }
+
+    #splash-progress-bar {
+        margin-top: 12px;
+    }
+
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #splash-card,
+    #splash-card > div:first-child {
+        animation: none !important;
+    }
+
+    #splash-screen:not(.forzar-despedida) {
+        animation: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
