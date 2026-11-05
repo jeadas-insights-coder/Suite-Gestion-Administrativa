@@ -104,6 +104,21 @@
   function iniciales(n) { return String(n || '?').split(/\s+/).slice(0, 2).map(function (x) { return x.charAt(0); }).join('').toUpperCase(); }
   function logoSrc(e) { return e && /^data:image\/(png|jpeg|webp);base64,/.test(e.logo_data || '') ? e.logo_data : ''; }
 
+/* ---------- identidad institucional JDI ---------- */
+
+function identidadJDI() {
+
+    return '<span class="jdi-brand-mark" aria-hidden="true">' +
+           'JDI' +
+           '</span>' +
+
+           '<span class="jdi-brand-text">' +
+           '<span class="jdi-brand-name">JeaDas<i>.Insights</i></span>' +
+           '<small>Suite de Gestión Administrativa</small>' +
+           '</span>';
+
+}
+
   
 /* ---------- identidad institucional JeaDas.Insights ---------- */
 
@@ -261,18 +276,94 @@ function identidadJDI() {
   }
 
   /* ---------- cabecera ---------- */
-  function cabecera() {
-    var me = ST.me, e = me.empresa, u = me.usuario, enMod = !!ST.mod;
+
+/* ---------- cabecera institucional ---------- */
+
+function cabecera() {
+
+    var me = ST.me,
+        e = me.empresa,
+        u = me.usuario,
+        enMod = !!ST.mod;
+
     var logo = logoSrc(e);
-    return '<header class="top"><button class="brand" id="hbrand" aria-label="Ir al inicio">JeaDas<i>.Insights</i></button>' +
-      (e ? '<div class="co">' + (logo ? '<img src="' + esc(logo) + '" alt="">' : '') + '<b>' + esc(e.nombre) + '</b></div>' : '') +
-      (enMod ? '<span class="pill modpill">' + esc(MI(ST.mod).n) + '</span>' : '') +
-      '<span class="sp"></span>' + (enMod ? '<button class="btn back" id="hback" aria-label="Volver a módulos">←<span class="bt"> Módulos</span></button>' : '') +
-      '<button class="userbtn" id="hu" aria-haspopup="true" aria-expanded="' + ST.menu + '"><span class="avatar">' + esc(iniciales(u.nombre)) + '</span><span class="nm">' + esc(u.nombre) + '</span></button></header>' +
-      (ST.menu ? '<div class="menu" role="menu"><div class="who"><b>' + esc(u.nombre) + '</b><div class="mut sm">' + esc(u.usuario) + ' · ' + (me.esSuper ? 'SuperAdministrador' : me.esAdmin ? 'Administrador del cliente' : 'Usuario') + '</div></div>' +
-        '<button data-m="inicio">' + (me.esSuper ? 'Empresas' : 'Mis módulos') + '</button>' + (me.esAdmin ? '<button data-m="admin">Administración de la empresa</button>' : '') +
-        '<button data-m="perfil">Mi cuenta</button><button data-m="clave">Cambiar contraseña</button><button data-m="salir">Salir</button><div class="ver mut sm">Versión ' + esc(window.JDI_V || '?') + (me.version && me.version !== window.JDI_V ? ' · servidor ' + esc(me.version) : '') + '</div></div>' : '');
-  }
+
+    return '<header class="top">' +
+
+      '<button class="brand jdi-header-brand" id="hbrand" ' +
+      'aria-label="Ir al inicio">' +
+
+          identidadJDI() +
+
+      '</button>' +
+
+      (e ? '<div class="co">' +
+          (logo ? '<img src="' + esc(logo) + '" alt="">' : '') +
+          '<b>' + esc(e.nombre) + '</b>' +
+      '</div>' : '') +
+
+      (enMod ?
+          '<span class="pill modpill">' +
+          esc(MI(ST.mod).n) +
+          '</span>' : '') +
+
+      '<span class="sp"></span>' +
+
+      (enMod ?
+          '<button class="btn back" id="hback" ' +
+          'aria-label="Volver a módulos">' +
+          '←<span class="bt"> Módulos</span>' +
+          '</button>' : '') +
+
+      '<button class="userbtn" id="hu" ' +
+      'aria-haspopup="true" aria-expanded="' + ST.menu + '">' +
+
+          '<span class="avatar">' +
+          esc(iniciales(u.nombre)) +
+          '</span>' +
+
+          '<span class="nm">' +
+          esc(u.nombre) +
+          '</span>' +
+
+      '</button>' +
+
+      '</header>' +
+
+      (ST.menu ?
+
+        '<div class="menu" role="menu">' +
+
+          '<div class="who">' +
+            '<b>' + esc(u.nombre) + '</b>' +
+            '<div class="mut sm">' +
+              esc(u.usuario) + ' · ' +
+              (me.esSuper ? 'SuperAdministrador' :
+               me.esAdmin ? 'Administrador del cliente' :
+               'Usuario') +
+            '</div>' +
+          '</div>' +
+
+          '<button data-m="inicio">' +
+            (me.esSuper ? 'Empresas' : 'Mis módulos') +
+          '</button>' +
+
+          (me.esAdmin ?
+            '<button data-m="admin">Administración de la empresa</button>' : '') +
+
+          '<button data-m="perfil">Mi cuenta</button>' +
+          '<button data-m="clave">Cambiar contraseña</button>' +
+          '<button data-m="salir">Salir</button>' +
+
+          '<div class="ver mut sm">' +
+            'Versión ' + esc(window.JDI_V || '?') +
+            (me.version && me.version !== window.JDI_V ?
+              ' · servidor ' + esc(me.version) : '') +
+          '</div>' +
+
+        '</div>' : '');
+
+}
   function enlazarCabecera() {
     $('#hbrand').onclick = abrirInicio;
     var b = $('#hback'); if (b) b.onclick = abrirInicio;
