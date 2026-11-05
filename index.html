@@ -1,14 +1,19 @@
+
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JeaDas.Insights</title>
-<meta name="theme-color" content="#09090b">
 
-<!-- =====================================================
-     IDENTIDAD VISUAL JEADAS.INSIGHTS
-     ===================================================== -->
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<title>JeaDas.Insights</title>
+
+<!-- IDENTIDAD VISUAL -->
 
 <link
     rel="icon"
@@ -23,129 +28,247 @@
     content="JeaDas.Insights"
 >
 
-<link rel="stylesheet" href="css/shell.css?v=2.0.0">
+<!-- ESTILOS PRINCIPALES -->
 
-<!-- ========================================================== -->
-<!-- ANIMACIONES PURO CSS (Rendimiento por Hardware/GPU) -->
-<!-- ========================================================== -->
-<style>
-    @keyframes splashCardEntrance {
-        0% { transform: translateY(25px) scale(0.97); opacity: 0; }
-        100% { transform: translateY(0) scale(1); opacity: 1; }
-    }
-    @keyframes splashShineHover {
-        0% { left: -150%; top: -50%; }
-        50% { left: 150%; top: 50%; }
-        100% { left: 150%; top: 50%; }
-    }
-    @keyframes splashLineLoad {
-        0% { left: -100%; }
-        100% { left: 0%; }
-    }
-    @keyframes splashFloatGlow {
-        0% { transform: translate(0, 0) scale(1); }
-        100% { transform: translate(30px, 20px) scale(1.1); }
-    }
-    
-    /* ⏱️ AUTO-OCULTADO PURAMENTE EN CSS (Dura 2.2s activo + 0.5s de desvanecimiento) */
-    @keyframes autoOcultarSplash {
-        0%, 80% { opacity: 1; visibility: visible; }
-        100% { opacity: 0; visibility: hidden; pointer-events: none; }
-    }
+<link
+    rel="stylesheet"
+    href="css/shell.css?v=2.0.0"
+>
 
-    #splash-screen {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at center, #1C337E 0%, #13235A 100%);
-        z-index: 999999; display: flex; flex-direction: column;
-        justify-content: center; align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        overflow: hidden;
-        /* Se oculta solo sin usar JS */
-        animation: autoOcultarSplash 2.7s ease forwards; 
-    }
+<!-- SPLASH RESPONSIVE -->
 
-    /* Clase manual que usará la función mostrarDespedida() cuando salgas */
-    #splash-screen.forzar-despedida {
-        animation: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-        transition: opacity 0.4s ease;
-    }
-</style>
+<link
+    rel="stylesheet"
+    href="css/splash-responsive.css?v=2.0.1"
+>
+
 </head>
-<body style="margin: 0; padding: 0;">
 
-<!-- ========================================================== -->
-<!-- SPLASH SCREEN NATIVO -->
-<!-- ========================================================== -->
+<body style="margin:0;padding:0;">
+
+<!-- =====================================================
+     SPLASH SCREEN
+     ===================================================== -->
+
 <div id="splash-screen">
-    <!-- Efectos de Luces de Fondo de la máscara -->
-    <div style="position: absolute; width: 350px; height: 350px; background: #19B9DF; filter: blur(140px); opacity: 0.12; top: 15%; left: 15%; animation: splashFloatGlow 6s ease-in-out infinite alternate;"></div>
-    <div style="position: absolute; width: 400px; height: 400px; background: #8A3DA6; filter: blur(160px); opacity: 0.10; bottom: 15%; right: 15%; animation: splashFloatGlow 8s ease-in-out infinite alternate-reverse;"></div>
 
-    <!-- Tarjeta Central -->
-    <div id="splash-card" style="position: relative; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 50px 70px; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); text-align: center; overflow: hidden; animation: splashCardEntrance 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
-        <div style="position: absolute; top: -50%; left: -150%; width: 60%; height: 200%; background: linear-gradient(90deg, transparent, rgba(25, 185, 223, 0.2), rgba(138, 61, 166, 0.15), transparent); transform: rotate(30deg); animation: splashShineHover 2.5s ease-in-out infinite;"></div>
-        
-        <div style="margin-bottom: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <h1 id="splash-titulo" style="color: #ffffff; font-size: 3.2rem; font-weight: 900; letter-spacing: 3px; margin: 0; padding: 0;">
-                JeaDas<span style="color: #19B9DF; text-shadow: 0 0 25px rgba(25,185,223,0.5);">.Insights</span>
+    <!-- LUZ SUPERIOR -->
+
+    <div style="
+        position:absolute;
+        width:clamp(180px,35vw,350px);
+        height:clamp(180px,35vw,350px);
+        background:#19B9DF;
+        filter:blur(clamp(70px,12vw,140px));
+        opacity:.12;
+        top:15%;
+        left:15%;
+        animation:splashFloatGlow 6s ease-in-out infinite alternate;
+        pointer-events:none;
+    "></div>
+
+    <!-- LUZ INFERIOR -->
+
+    <div style="
+        position:absolute;
+        width:clamp(200px,40vw,400px);
+        height:clamp(200px,40vw,400px);
+        background:#8A3DA6;
+        filter:blur(clamp(80px,14vw,160px));
+        opacity:.10;
+        bottom:15%;
+        right:15%;
+        animation:splashFloatGlow 8s ease-in-out infinite alternate-reverse;
+        pointer-events:none;
+    "></div>
+
+    <!-- TARJETA CENTRAL -->
+
+    <div id="splash-card">
+
+        <!-- BRILLO -->
+
+        <div style="
+            position:absolute;
+            top:-50%;
+            left:-150%;
+            width:60%;
+            height:200%;
+            background:linear-gradient(
+                90deg,
+                transparent,
+                rgba(25,185,223,.2),
+                rgba(138,61,166,.15),
+                transparent
+            );
+            transform:rotate(30deg);
+            animation:splashShineHover 2.5s ease-in-out infinite;
+        "></div>
+
+        <!-- IDENTIDAD -->
+
+        <div style="
+            margin-bottom:5px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+        ">
+
+            <h1
+                id="splash-titulo"
+                style="
+                    color:#fff;
+                    font-size:3.2rem;
+                    font-weight:900;
+                    letter-spacing:3px;
+                    margin:0;
+                    padding:0;
+                "
+            >
+                JeaDas<span style="
+                    color:#19B9DF;
+                    text-shadow:0 0 25px rgba(25,185,223,.5);
+                ">.Insights</span>
             </h1>
-            <p id="splash-mensaje" style="color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin: 15px 0 0 0; font-weight: 400; letter-spacing: 0.5px;">Gracias por visitarnos</p>
+
+            <p
+                id="splash-mensaje"
+                style="
+                    color:rgba(255,255,255,.7);
+                    font-size:1.1rem;
+                    margin:15px 0 0;
+                    font-weight:400;
+                    letter-spacing:.5px;
+                "
+            >
+                Gracias por visitarnos
+            </p>
+
         </div>
 
-        <div id="splash-progress-bar" style="width: 100%; height: 3px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 30px; overflow: hidden; position: relative;">
-            <div style="position: absolute; width: 100%; height: 100%; background: linear-gradient(90deg, #214EC2, #19B9DF, #8A3DA6); animation: splashLineLoad 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;"></div>
+        <!-- BARRA DE PROGRESO -->
+
+        <div id="splash-progress-bar">
+
+            <div style="
+                position:absolute;
+                width:100%;
+                height:100%;
+                background:linear-gradient(
+                    90deg,
+                    #214EC2,
+                    #19B9DF,
+                    #8A3DA6
+                );
+                animation:splashLineLoad 2s
+                cubic-bezier(.4,0,.2,1) forwards;
+            "></div>
+
         </div>
+
     </div>
+
 </div>
 
-<!-- Contenedores del ecosistema local de tu App -->
+<!-- =====================================================
+     CONTENEDORES DEL ECOSISTEMA
+     ===================================================== -->
+
 <div id="bar"></div>
+
 <div id="root"></div>
-<div id="toasts" role="status" aria-live="polite"></div>
 
-<!-- ========================================================== -->
-<!-- ÚNICO SCRIPT DE PASO PARA LA DESPEDIDA -->
-<!-- ========================================================== -->
+<div
+    id="toasts"
+    role="status"
+    aria-live="polite"
+></div>
+
+<!-- =====================================================
+     CONTROL DE VERSIÓN Y DESPEDIDA
+     ===================================================== -->
+
 <script>
-    window.JDI_V = '2.0.0';
 
-    // Esta función queda disponible para que tu shell.js la invoque al salir
-    window.mostrarDespedida = function(urlRedireccion = 'index.html') {
-        const screen = document.getElementById('splash-screen');
-        const titulo = document.getElementById('splash-titulo');
-        const mensaje = document.getElementById('splash-mensaje');
-        const bar = document.getElementById('splash-progress-bar');
+window.JDI_V = '2.0.1';
 
-        if (!screen) return;
+window.mostrarDespedida = function(
+    urlRedireccion = 'index.html'
+) {
 
-        // 1. Modificar visualmente la tarjeta para transformarla en Despedida
-        if (titulo) titulo.innerHTML = '¡Hasta pronto!';
-        if (mensaje) {
-            mensaje.innerText = 'Que tengas una hermosa jornada';
-            mensaje.style.color = '#19B9DF';
-        }
-        if (bar) {
-            bar.style.width = '150px';
-            bar.style.margin = '30px auto 0 auto';
-            bar.innerHTML = `<div style="position: absolute; width: 100%; height: 100%; background: linear-gradient(90deg, #8A3DA6, #19B9DF); animation: splashLineLoad 1.8s linear forwards;"></div>`;
-        }
+    const screen =
+        document.getElementById('splash-screen');
 
-        // 2. Forzar al CSS a mostrar la pantalla aplicando la clase manual
-        screen.classList.add('forzar-despedida');
+    const titulo =
+        document.getElementById('splash-titulo');
 
-        // 3. Redirigir al destino de cierre de sesión
-        setTimeout(() => {
-            window.location.href = urlRedireccion;
-        }, 2200);
-    };
+    const mensaje =
+        document.getElementById('splash-mensaje');
+
+    const bar =
+        document.getElementById('splash-progress-bar');
+
+    if (!screen) return;
+
+    /* TRANSFORMAR SPLASH EN DESPEDIDA */
+
+    if (titulo) {
+        titulo.innerHTML = '¡Hasta pronto!';
+    }
+
+    if (mensaje) {
+        mensaje.innerText =
+            'Que tengas una hermosa jornada';
+
+        mensaje.style.color = '#19B9DF';
+    }
+
+    if (bar) {
+
+        bar.style.width = 'min(150px, 100%)';
+
+        bar.style.margin = '30px auto 0';
+
+        bar.innerHTML = `
+            <div style="
+                position:absolute;
+                width:100%;
+                height:100%;
+                background:linear-gradient(
+                    90deg,
+                    #8A3DA6,
+                    #19B9DF
+                );
+                animation:splashLineLoad 1.8s linear forwards;
+            "></div>
+        `;
+    }
+
+    /* MOSTRAR DESPEDIDA */
+
+    screen.classList.add('forzar-despedida');
+
+    /* REDIRECCIÓN */
+
+    setTimeout(function() {
+
+        window.location.href = urlRedireccion;
+
+    }, 2200);
+
+};
+
 </script>
 
-<!-- Scripts de lógica de tu suite de gestión -->
+<!-- =====================================================
+     SCRIPTS DE LA APLICACIÓN
+     ===================================================== -->
+
 <script src="config.js?v=2.0.0"></script>
+
 <script src="assets/jdi-theme.js?v=2.0.0"></script>
+
 <script src="js/shell.js?v=2.0.0"></script>
 
 </body>
