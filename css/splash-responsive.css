@@ -406,3 +406,103 @@
     }
 
 }
+
+/* ==========================================================
+   JDI - CORRECCIÓN RESPONSIVE MÓVILES
+   ========================================================== */
+
+/* SPLASH: TIEMPO DE PRESENTACIÓN */
+
+#splash-screen:not(.forzar-despedida) {
+    animation: autoOcultarSplash 5s ease forwards;
+}
+
+@keyframes autoOcultarSplash {
+
+    0%, 90% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+}
+
+/* TARJETA: EVITAR DESBORDAMIENTOS */
+
+#splash-card {
+    width: min(100%, 760px) !important;
+    max-width: 760px;
+
+    min-width: 0;
+
+    padding:
+        clamp(20px, 5vw, 55px)
+        clamp(12px, 5vw, 60px) !important;
+}
+
+/* NOMBRE COMPLETO EN UNA SOLA LÍNEA */
+
+#splash-titulo {
+    display: block;
+
+    width: 100%;
+
+    white-space: nowrap !important;
+
+    overflow: visible;
+
+    font-size:
+        clamp(1.05rem, 6.2vw, 3.8rem) !important;
+
+    letter-spacing:
+        clamp(0px, .25vw, 3px) !important;
+
+    line-height: 1.2;
+
+}
+
+/* TEXTO SECUNDARIO */
+
+#splash-mensaje {
+    font-size: clamp(.82rem, 2.5vw, 1.2rem);
+}
+
+/* BARRA DE PROGRESO */
+
+#splash-progress-bar > div {
+    animation-duration: 4s !important;
+}
+
+/* PANTALLAS MUY ESTRECHAS */
+
+@media (max-width: 360px) {
+
+    #splash-card {
+        padding: 24px 10px !important;
+    }
+
+    #splash-titulo {
+        font-size: clamp(1.05rem, 6vw, 1.35rem) !important;
+        letter-spacing: 0 !important;
+    }
+
+}
+
+/* PANTALLAS CON POCA ALTURA */
+
+@media (max-height: 500px) {
+
+    #splash-card {
+        padding: 12px 20px !important;
+    }
+
+    #splash-titulo {
+        font-size: clamp(1.1rem, 4vw, 2rem) !important;
+    }
+
+}
