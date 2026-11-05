@@ -1,0 +1,89 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    width="512"
+    height="512"
+>
+    <defs>
+        <!-- Degradado oficial JeaDas.Insights -->
+        <linearGradient
+            id="jdi-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+        >
+            <stop offset="0%" stop-color="#214EC2"/>
+            <stop offset="50%" stop-color="#19B9DF"/>
+            <stop offset="100%" stop-color="#8A3DA6"/>
+        </linearGradient>
+
+        <!-- Efecto de iluminación -->
+        <filter
+            id="jdi-glow"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
+        >
+            <feDropShadow
+                dx="0"
+                dy="6"
+                stdDeviation="10"
+                flood-color="#19B9DF"
+                flood-opacity="0.35"
+            />
+        </filter>
+    </defs>
+
+    <!-- Fondo oscuro -->
+    <rect
+        width="512"
+        height="512"
+        rx="128"
+        fill="#11111b"
+    />
+
+    <!-- Monograma JDI -->
+    <g
+        filter="url(#jdi-glow)"
+        fill="url(#jdi-gradient)"
+    >
+        <!-- Letra J -->
+        <path d="
+            M110 150 H175 V300
+            C175 340 145 365 110 365
+            C90 365 70 355 70 335
+            H115 C115 340 120 342 125 342
+            C135 342 140 330 140 310
+            V205 H110 Z
+        "/>
+
+        <!-- Letra D -->
+        <path d="
+            M205 150 H270
+            C315 150 345 180 345 256
+            C345 332 315 362 270 362
+            H205 Z
+
+            M240 195 V317 H265
+            C285 317 305 300 305 256
+            C305 212 285 195 265 195 Z
+        "/>
+
+        <!-- Letra I -->
+        <path d="
+            M375 205 H425 V362 H375 Z
+        "/>
+
+        <!-- Nodo de Insights -->
+        <circle
+            cx="400"
+            cy="155"
+            r="25"
+            fill="#19B9DF"
+        />
+    </g>
+</svg>
