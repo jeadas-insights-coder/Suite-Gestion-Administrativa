@@ -299,6 +299,44 @@ window.mostrarDespedida = function(
 
 };
 
+
+<!-- =====================================================
+     REGISTRO PWA JEADAS.INSIGHTS
+     ===================================================== -->
+
+<script>
+
+if ('serviceWorker' in navigator) {
+
+    window.addEventListener('load', function() {
+
+        navigator.serviceWorker
+            .register('./sw.js', {
+                scope: './'
+            })
+            .then(function(registration) {
+
+                console.log(
+                    'JeaDas.Insights PWA registrada:',
+                    registration.scope
+                );
+
+            })
+            .catch(function(error) {
+
+                console.error(
+                    'Error registrando PWA:',
+                    error
+                );
+
+            });
+
+    });
+
+}
+
+</script>
+
 </script>
 
 <!-- =====================================================
