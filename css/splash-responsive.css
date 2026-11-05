@@ -506,3 +506,18 @@
     }
 
 }
+/* IDENTIDAD VISUAL EN SPLASH Y DESPEDIDA */
+
+.jdi-splash-logo {
+    display: block;
+
+    width: clamp(42px, 9vw, 76px);
+    height: clamp(42px, 9vw, 76px);
+
+    object-fit: contain;
+
+    margin: 0 auto clamp(10px, 2vw, 18px);
+
+    filter:
+        drop-shadow(0 0 12px rgba(25,185,223,.25));
+}
