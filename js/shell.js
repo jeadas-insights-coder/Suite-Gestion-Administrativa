@@ -104,6 +104,39 @@
   function iniciales(n) { return String(n || '?').split(/\s+/).slice(0, 2).map(function (x) { return x.charAt(0); }).join('').toUpperCase(); }
   function logoSrc(e) { return e && /^data:image\/(png|jpeg|webp);base64,/.test(e.logo_data || '') ? e.logo_data : ''; }
 
+  
+/* ---------- identidad institucional JeaDas.Insights ---------- */
+
+function identidadJDI() {
+
+    return `
+        <div class="jdi-identity">
+
+            <img
+                src="./favicon.svg?v=2.0.2"
+                class="jdi-identity-icon"
+                alt="JDI"
+                width="36"
+                height="36"
+            >
+
+            <div class="jdi-identity-text">
+
+                <strong>
+                    JeaDas<span>.Insights</span>
+                </strong>
+
+                <small>
+                    Suite de Gestión Administrativa
+                </small>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
   /* ---------- marca de la empresa ---------- */
   function aplicarMarca() {
     var e = ST.me && ST.me.empresa;
