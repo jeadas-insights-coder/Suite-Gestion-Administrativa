@@ -288,3 +288,163 @@ html,body{overflow-x:hidden;max-width:100%}
     }
 
 }
+
+/* ==========================================================
+   JEADAS.INSIGHTS - IDENTIDAD CORPORATIVA
+   ========================================================== */
+
+.jdi-header-brand {
+
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+
+    padding: 2px 0 !important;
+
+    text-align: left;
+
+    flex-shrink: 0;
+
+}
+
+.jdi-brand-mark {
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background: #11111b;
+
+    border: 1px solid rgba(25,185,223,.35);
+
+    color: #19B9DF;
+
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    box-shadow: 0 0 16px rgba(25,185,223,.12);
+
+}
+
+.jdi-brand-text {
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    line-height: 1.2;
+
+}
+
+.jdi-brand-name {
+
+    font-size: 1.05rem;
+
+    font-weight: 850;
+
+    letter-spacing: -.035em;
+
+    color: var(--color-text-main);
+
+    white-space: nowrap;
+
+}
+
+.jdi-brand-name i {
+
+    font-style: normal;
+
+    color: var(--color-cyan);
+
+}
+
+.jdi-brand-text small {
+
+    margin-top: 3px;
+
+    font-size: .63rem;
+
+    font-weight: 500;
+
+    color: var(--color-text-muted);
+
+    white-space: nowrap;
+
+}
+
+/* Tablet */
+
+@media(max-width:800px) {
+
+    .jdi-brand-mark {
+
+        width: 37px;
+        height: 37px;
+        flex-basis: 37px;
+
+    }
+
+    .jdi-brand-name {
+
+        font-size: .94rem;
+
+    }
+
+}
+
+/* Celulares */
+
+@media(max-width:560px) {
+
+    .jdi-header-brand {
+
+        gap: 7px;
+
+    }
+
+    .jdi-brand-mark {
+
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+
+        font-size: 12px;
+
+    }
+
+    .jdi-brand-name {
+
+        font-size: .82rem;
+
+    }
+
+    .jdi-brand-text small {
+
+        font-size: .54rem;
+
+    }
+
+}
+
+/* Accesibilidad */
+
+@media(prefers-reduced-motion:reduce) {
+
+    .jdi-header-brand,
+    .jdi-brand-mark {
+
+        transition: none !important;
+
+    }
+
+}
