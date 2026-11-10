@@ -3,348 +3,351 @@
 
 <head>
 
+    <!-- =========================================
+         JEADAS.INSIGHTS - CONFIGURACIÓN GENERAL
+         ========================================= -->
 
-<!-- =====================================================
-     JEADAS.INSIGHTS - ICONOS MULTIPLATAFORMA
-     ===================================================== -->
+    <meta charset="utf-8">
 
-<!-- Favicon del navegador -->
-<link
-    rel="icon"
-    type="image/svg+xml"
-    href="./favicon.svg?v=2.0.2"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
 
-<!-- Icono de acceso directo -->
-<link
-    rel="icon"
-    type="image/png"
-    sizes="192x192"
-    href="./assets/icons/icon-192.png"
->
+    <title>JeaDas.Insights</title>
 
-<!-- Apple / iOS -->
-<link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="./assets/icons/apple-touch-icon.png"
->
+    <!-- IDENTIDAD DEL NAVEGADOR -->
 
-<!-- Identidad del navegador -->
-<meta name="theme-color" content="#09090b">
+    <meta name="theme-color" content="#09090b">
 
-<meta
-    name="application-name"
-    content="JeaDas.Insights"
->
+    <meta
+        name="application-name"
+        content="JeaDas.Insights"
+    >
 
-<!-- Manifiesto PWA -->
-<link
-    rel="manifest"
-    href="./manifest.webmanifest"
->
+    <!-- FAVICON SVG -->
 
-<meta charset="utf-8">
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="./favicon.svg?v=2.0.6"
+    >
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
->
+    <!-- ICONO ANDROID -->
 
-<title>JeaDas.Insights</title>
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="./assets/icons/icon-192.png"
+    >
 
-<!-- IDENTIDAD VISUAL -->
-<link
-    rel="icon"
-    type="image/svg+xml"
-    href="favicon.svg?v=2.0.1"
->
+    <!-- APPLE / IOS -->
 
-<meta name="theme-color" content="#09090b">
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="./assets/icons/apple-touch-icon.png"
+    >
 
-<meta
-    name="application-name"
-    content="JeaDas.Insights"
->
+    <!-- MANIFIESTO PWA -->
 
-<!-- ESTILOS DEL ECOSISTEMA -->
-<link rel="stylesheet" href="css/shell.css?v=2.0.0">
+    <link
+        rel="manifest"
+        href="./manifest.webmanifest"
+    >
 
-<!-- SPLASH RESPONSIVE -->
-<link rel="stylesheet" href="css/splash-responsive.css?v=2.0.1">
-    
+    <!-- ESTILOS DEL ECOSISTEMA -->
+
+    <link
+        rel="stylesheet"
+        href="./css/shell.css?v=2.0.0"
+    >
+
+    <!-- SPLASH RESPONSIVE -->
+
+    <link
+        rel="stylesheet"
+        href="./css/splash-responsive.css?v=2.0.6"
+    >
+
 </head>
 
 <body style="margin:0;padding:0;">
 
-<!-- =====================================================
-     SPLASH SCREEN
-     ===================================================== -->
+    <!-- =========================================
+         SPLASH SCREEN
+         ========================================= -->
 
-<div id="splash-screen">
+    <div id="splash-screen">
 
-    <!-- LUZ SUPERIOR -->
-
-    <div style="
-        position:absolute;
-        width:clamp(180px,35vw,350px);
-        height:clamp(180px,35vw,350px);
-        background:#19B9DF;
-        filter:blur(clamp(70px,12vw,140px));
-        opacity:.12;
-        top:15%;
-        left:15%;
-        animation:splashFloatGlow 6s ease-in-out infinite alternate;
-        pointer-events:none;
-    "></div>
-
-    <!-- LUZ INFERIOR -->
-
-    <div style="
-        position:absolute;
-        width:clamp(200px,40vw,400px);
-        height:clamp(200px,40vw,400px);
-        background:#8A3DA6;
-        filter:blur(clamp(80px,14vw,160px));
-        opacity:.10;
-        bottom:15%;
-        right:15%;
-        animation:splashFloatGlow 8s ease-in-out infinite alternate-reverse;
-        pointer-events:none;
-    "></div>
-
-    <!-- TARJETA CENTRAL -->
-
-    <div id="splash-card">
-
-        <!-- BRILLO -->
+        <!-- LUZ SUPERIOR -->
 
         <div style="
             position:absolute;
-            top:-50%;
-            left:-150%;
-            width:60%;
-            height:200%;
-            background:linear-gradient(
-                90deg,
-                transparent,
-                rgba(25,185,223,.2),
-                rgba(138,61,166,.15),
-                transparent
-            );
-            transform:rotate(30deg);
-            animation:splashShineHover 2.5s ease-in-out infinite;
+            width:clamp(180px,35vw,350px);
+            height:clamp(180px,35vw,350px);
+            background:#19B9DF;
+            filter:blur(clamp(70px,12vw,140px));
+            opacity:.12;
+            top:15%;
+            left:15%;
+            animation:splashFloatGlow 6s ease-in-out infinite alternate;
+            pointer-events:none;
         "></div>
 
-        <!-- IDENTIDAD -->
+        <!-- LUZ INFERIOR -->
 
         <div style="
-            margin-bottom:5px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-        ">
-          
-    <!-- LOGOTIPO JDI -->
-          
-          <div class="jdi-splash-logo-container">
-          
-              <img
-                  class="jdi-splash-logo"
-                  src="./favicon.svg?v=2.0.5"
-                  alt="JeaDas.Insights"
-              >
-          
-          </div>
-          
-          </div>
-             <h1
-                id="splash-titulo"
-                style="
-                    color:#fff;
-                    font-size:3.2rem;
-                    font-weight:900;
-                    letter-spacing:3px;
-                    margin:0;
-                    padding:0;
-                "
-            >
-                JeaDas<span style="
-                    color:#19B9DF;
-                    text-shadow:0 0 25px rgba(25,185,223,.5);
-                ">.Insights</span>
-            </h1>
+            position:absolute;
+            width:clamp(200px,40vw,400px);
+            height:clamp(200px,40vw,400px);
+            background:#8A3DA6;
+            filter:blur(clamp(80px,14vw,160px));
+            opacity:.10;
+            bottom:15%;
+            right:15%;
+            animation:splashFloatGlow 8s ease-in-out infinite alternate-reverse;
+            pointer-events:none;
+        "></div>
 
-            <p
-                id="splash-mensaje"
-                style="
-                    color:rgba(255,255,255,.7);
-                    font-size:1.1rem;
-                    margin:15px 0 0;
-                    font-weight:400;
-                    letter-spacing:.5px;
-                "
-            >
-                Gracias por visitarnos
-            </p>
+        <!-- TARJETA CENTRAL -->
 
-        </div>
+        <div id="splash-card">
 
-        <!-- BARRA DE PROGRESO -->
-
-        <div id="splash-progress-bar">
+            <!-- BRILLO -->
 
             <div style="
                 position:absolute;
-                width:100%;
-                height:100%;
+                top:-50%;
+                left:-150%;
+                width:60%;
+                height:200%;
                 background:linear-gradient(
                     90deg,
-                    #214EC2,
-                    #19B9DF,
-                    #8A3DA6
+                    transparent,
+                    rgba(25,185,223,.2),
+                    rgba(138,61,166,.15),
+                    transparent
                 );
-                animation:splashLineLoad 2s
-                cubic-bezier(.4,0,.2,1) forwards;
+                transform:rotate(30deg);
+                animation:splashShineHover 2.5s ease-in-out infinite;
+                pointer-events:none;
             "></div>
+
+            <!-- IDENTIDAD -->
+
+            <div style="
+                margin-bottom:5px;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+            ">
+
+                <!-- LOGOTIPO JDI -->
+
+                <div class="jdi-splash-logo-container">
+
+                    <img
+                        class="jdi-splash-logo"
+                        src="./favicon.svg?v=2.0.6"
+                        alt="JeaDas.Insights"
+                    >
+
+                </div>
+
+                <!-- NOMBRE DE LA PLATAFORMA -->
+
+                <h1
+                    id="splash-titulo"
+                    style="
+                        color:#fff;
+                        font-size:3.2rem;
+                        font-weight:900;
+                        letter-spacing:3px;
+                        margin:0;
+                        padding:0;
+                    "
+                >
+                    JeaDas<span style="
+                        color:#19B9DF;
+                        text-shadow:0 0 25px rgba(25,185,223,.5);
+                    ">.Insights</span>
+                </h1>
+
+                <!-- MENSAJE -->
+
+                <p
+                    id="splash-mensaje"
+                    style="
+                        color:rgba(255,255,255,.7);
+                        font-size:1.1rem;
+                        margin:15px 0 0;
+                        font-weight:400;
+                        letter-spacing:.5px;
+                    "
+                >
+                    Gracias por visitarnos
+                </p>
+
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+
+            <div id="splash-progress-bar">
+
+                <div style="
+                    position:absolute;
+                    width:100%;
+                    height:100%;
+                    background:linear-gradient(
+                        90deg,
+                        #214EC2,
+                        #19B9DF,
+                        #8A3DA6
+                    );
+                    animation:splashLineLoad 2s
+                    cubic-bezier(.4,0,.2,1) forwards;
+                "></div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- =========================================
+         CONTENEDORES DEL ECOSISTEMA
+         ========================================= -->
 
-<!-- =====================================================
-     CONTENEDORES DEL ECOSISTEMA
-     ===================================================== -->
+    <div id="bar"></div>
 
-<div id="bar"></div>
+    <div id="root"></div>
 
-<div id="root"></div>
+    <div
+        id="toasts"
+        role="status"
+        aria-live="polite"
+    ></div>
 
-<div
-    id="toasts"
-    role="status"
-    aria-live="polite"
-></div>
+    <!-- =========================================
+         CONTROL DE VERSIÓN Y DESPEDIDA
+         ========================================= -->
 
-<!-- CONTROL DE VERSIÓN Y DESPEDIDA -->
+    <script>
 
-<script>
+        window.JDI_V = '2.0.6';
 
-window.JDI_V = '2.0.4';
+        window.mostrarDespedida = function(
+            urlRedireccion = 'index.html'
+        ) {
 
-window.mostrarDespedida = function(
-    urlRedireccion = 'index.html'
-) {
+            const screen =
+                document.getElementById('splash-screen');
 
-    const screen =
-        document.getElementById('splash-screen');
+            const titulo =
+                document.getElementById('splash-titulo');
 
-    const titulo =
-        document.getElementById('splash-titulo');
+            const mensaje =
+                document.getElementById('splash-mensaje');
 
-    const mensaje =
-        document.getElementById('splash-mensaje');
+            const bar =
+                document.getElementById('splash-progress-bar');
 
-    const bar =
-        document.getElementById('splash-progress-bar');
+            if (!screen) return;
 
-    if (!screen) return;
+            if (titulo) {
+                titulo.innerHTML = '¡Hasta pronto!';
+            }
 
-    if (titulo) {
-        titulo.innerHTML = '¡Hasta pronto!';
-    }
+            if (mensaje) {
+                mensaje.innerText =
+                    'Que tengas una hermosa jornada';
 
-    if (mensaje) {
-        mensaje.innerText =
-            'Que tengas una hermosa jornada';
+                mensaje.style.color = '#19B9DF';
+            }
 
-        mensaje.style.color = '#19B9DF';
-    }
+            if (bar) {
 
-    if (bar) {
+                bar.style.width = 'min(150px, 100%)';
+                bar.style.margin = '30px auto 0';
 
-        bar.style.width = 'min(150px, 100%)';
-        bar.style.margin = '30px auto 0';
+                bar.innerHTML = `
+                    <div style="
+                        position:absolute;
+                        width:100%;
+                        height:100%;
+                        background:linear-gradient(
+                            90deg,
+                            #8A3DA6,
+                            #19B9DF
+                        );
+                        animation:splashLineLoad 1.8s linear forwards;
+                    "></div>
+                `;
+            }
 
-        bar.innerHTML = `
-            <div style="
-                position:absolute;
-                width:100%;
-                height:100%;
-                background:linear-gradient(
-                    90deg,
-                    #8A3DA6,
-                    #19B9DF
-                );
-                animation:splashLineLoad 1.8s linear forwards;
-            "></div>
-        `;
-    }
+            screen.classList.add('forzar-despedida');
 
-    screen.classList.add('forzar-despedida');
+            setTimeout(function() {
 
-    setTimeout(function() {
+                window.location.href = urlRedireccion;
 
-        window.location.href = urlRedireccion;
+            }, 2200);
 
-    }, 2200);
+        };
 
-};
+    </script>
 
-</script>
+    <!-- =========================================
+         REGISTRO PWA JEADAS.INSIGHTS
+         ========================================= -->
 
+    <script>
 
-<!-- REGISTRO PWA JEADAS.INSIGHTS -->
+        if ('serviceWorker' in navigator) {
 
-<script>
+            window.addEventListener('load', function() {
 
-if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('./sw.js', {
+                        scope: './'
+                    })
 
-    window.addEventListener('load', function() {
+                    .then(function(registration) {
 
-        navigator.serviceWorker
-            .register('./sw.js', {
-                scope: './'
-            })
+                        console.log(
+                            'JeaDas.Insights PWA registrada:',
+                            registration.scope
+                        );
 
-            .then(function(registration) {
+                    })
 
-                console.log(
-                    'JeaDas.Insights PWA registrada:',
-                    registration.scope
-                );
+                    .catch(function(error) {
 
-            })
+                        console.error(
+                            'Error registrando PWA:',
+                            error
+                        );
 
-            .catch(function(error) {
-
-                console.error(
-                    'Error registrando PWA:',
-                    error
-                );
+                    });
 
             });
 
-    });
+        }
 
-}
+    </script>
 
-</script>
+    <!-- =========================================
+         SCRIPTS DE LA APLICACIÓN
+         ========================================= -->
 
-</script>
+    <script src="./config.js?v=2.0.0"></script>
 
-<!-- =====================================================
-     SCRIPTS DE LA APLICACIÓN
-     ===================================================== -->
+    <script src="./assets/jdi-theme.js?v=2.0.0"></script>
 
-<script src="config.js?v=2.0.0"></script>
-
-<script src="assets/jdi-theme.js?v=2.0.0"></script>
-
-<script src="js/shell.js?v=2.0.0"></script>
+    <script src="./js/shell.js?v=2.0.0"></script>
 
 </body>
 </html>
