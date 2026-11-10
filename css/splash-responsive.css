@@ -1,13 +1,13 @@
-
 /* ==========================================================
    JEADAS.INSIGHTS
    SPLASH SCREEN RESPONSIVE
-   Version: 2.0.1
+   Version: 2.0.6
    Compatible: Mobile / Tablet / Desktop / TV / 4K
    ========================================================== */
 
+
 /* ==========================================================
-   ANIMACIONES
+   01. ANIMACIONES
    ========================================================== */
 
 @keyframes splashCardEntrance {
@@ -64,7 +64,7 @@
 
 @keyframes autoOcultarSplash {
 
-    0%, 80% {
+    0%, 90% {
         opacity: 1;
         visibility: visible;
     }
@@ -77,14 +77,14 @@
 
 }
 
+
 /* ==========================================================
-   PANTALLA PRINCIPAL
+   02. PANTALLA PRINCIPAL
    ========================================================== */
 
 #splash-screen {
 
     position: fixed;
-
     inset: 0;
 
     width: 100%;
@@ -96,7 +96,6 @@
     padding: clamp(14px, 4vw, 60px);
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -120,12 +119,13 @@
 
     animation:
         autoOcultarSplash
-        2.7s ease forwards;
+        5s ease forwards;
 
 }
 
+
 /* ==========================================================
-   TARJETA CENTRAL
+   03. TARJETA CENTRAL
    ========================================================== */
 
 #splash-card {
@@ -133,6 +133,9 @@
     position: relative;
 
     width: min(100%, 760px);
+    max-width: 760px;
+
+    min-width: 0;
 
     max-height: calc(100% - 20px);
 
@@ -140,7 +143,7 @@
 
     padding:
         clamp(22px, 5vw, 55px)
-        clamp(18px, 6vw, 70px);
+        clamp(18px, 5vw, 60px);
 
     border-radius: clamp(16px, 3vw, 26px);
 
@@ -166,8 +169,9 @@
 
 }
 
+
 /* ==========================================================
-   BRILLO DE LA TARJETA
+   04. BRILLO DE LA TARJETA
    ========================================================== */
 
 #splash-card > div:first-child {
@@ -176,43 +180,50 @@
 
 }
 
+
 /* ==========================================================
-   IDENTIDAD JEADAS.INSIGHTS
+   05. IDENTIDAD VISUAL
    ========================================================== */
 
 #splash-titulo {
 
+    display: block;
+
+    width: 100%;
+
     color: #fff;
 
     font-size:
-        clamp(1.65rem, 6vw, 3.8rem);
+        clamp(1.05rem, 6.2vw, 3.8rem);
 
     font-weight: 900;
 
     letter-spacing:
-        clamp(1px, .5vw, 3px);
+        clamp(0px, .25vw, 3px);
 
-    line-height: 1.15;
+    line-height: 1.2;
 
     margin: 0;
-
     padding: 0;
 
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+
+    overflow: visible;
 
 }
 
 #splash-titulo span {
 
-    color: var(--color-cyan);
+    color: #19B9DF;
 
     text-shadow:
         0 0 25px rgba(25,185,223,.5);
 
 }
 
+
 /* ==========================================================
-   MENSAJE
+   06. MENSAJE DE BIENVENIDA
    ========================================================== */
 
 #splash-mensaje {
@@ -220,7 +231,7 @@
     color: rgba(255,255,255,.7);
 
     font-size:
-        clamp(.85rem, 2.5vw, 1.2rem);
+        clamp(.82rem, 2.5vw, 1.2rem);
 
     line-height: 1.5;
 
@@ -233,11 +244,92 @@
 
 }
 
+
 /* ==========================================================
-   BARRA DE PROGRESO
+   07. LOGOTIPO JDI - DISEÑO PREMIUM
+   ========================================================== */
+
+/* CONTENEDOR DEL LOGOTIPO */
+
+.jdi-splash-logo-container {
+
+    position: relative;
+
+    width: 112px;
+    height: 112px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 2px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 25px;
+
+    background: rgba(240,247,255,.98);
+
+    box-shadow:
+        0 0 35px rgba(25,185,223,.30),
+        0 0 65px rgba(138,61,166,.12),
+        0 8px 35px rgba(0,0,0,.30);
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+}
+
+/* IMAGEN SVG */
+
+.jdi-splash-logo {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    padding: 0;
+    margin: 0;
+
+    object-fit: contain;
+    object-position: center;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(25,185,223,.20)
+        );
+
+}
+
+/* EVITAR CONFLICTOS CON ESTILOS GLOBALES */
+
+.jdi-splash-logo-container img {
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: contain;
+
+}
+
+
+/* ==========================================================
+   08. BARRA DE PROGRESO
    ========================================================== */
 
 #splash-progress-bar {
+
+    position: relative;
 
     width: min(100%, 420px);
 
@@ -252,139 +344,225 @@
 
     overflow: hidden;
 
-    position: relative;
+}
+
+#splash-progress-bar > div {
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    animation-duration: 4s !important;
 
 }
 
+
 /* ==========================================================
-   LUCES DECORATIVAS
+   09. LUCES DECORATIVAS
    ========================================================== */
 
 #splash-screen > div {
 
     max-width: 100%;
+
     pointer-events: none;
 
 }
 
+
 /* ==========================================================
-   MÓVILES PEQUEÑOS
+   10. MÓVILES PEQUEÑOS
    ========================================================== */
 
 @media (max-width: 480px) {
 
     #splash-screen {
-
         padding: 16px;
-
     }
 
     #splash-card {
 
         width: 100%;
 
-        padding: 28px 18px;
+        padding: 28px 14px;
 
     }
 
     #splash-titulo {
 
-        font-size: clamp(1.5rem, 7vw, 2rem);
+        font-size:
+            clamp(1.05rem, 6.2vw, 2rem);
+
+        letter-spacing: 0;
+
+    }
+
+    .jdi-splash-logo-container {
+
+        width: 104px;
+        height: 104px;
+
+        padding: 2px;
+
+        border-radius: 23px;
+
+        margin-bottom: 14px;
 
     }
 
 }
 
+
 /* ==========================================================
-   TABLETS
+   11. PANTALLAS MUY ESTRECHAS
+   ========================================================== */
+
+@media (max-width: 360px) {
+
+    #splash-card {
+        padding: 24px 10px;
+    }
+
+    #splash-titulo {
+
+        font-size: 1.05rem;
+
+        letter-spacing: 0;
+
+    }
+
+    .jdi-splash-logo-container {
+
+        width: 96px;
+        height: 96px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   12. TABLETS
    ========================================================== */
 
 @media (min-width: 481px) and (max-width: 1024px) {
 
     #splash-card {
-
         width: 85%;
+    }
+
+    .jdi-splash-logo-container {
+
+        width: 116px;
+        height: 116px;
 
     }
 
 }
 
+
 /* ==========================================================
-   COMPUTADORES
+   13. COMPUTADORES
    ========================================================== */
 
 @media (min-width: 1025px) {
 
     #splash-card {
-
         width: min(75%, 760px);
+    }
+
+    .jdi-splash-logo-container {
+
+        width: 124px;
+        height: 124px;
 
     }
 
 }
 
+
 /* ==========================================================
-   TELEVISORES Y PANTALLAS 4K
+   14. TELEVISORES Y PANTALLAS 4K
    ========================================================== */
 
 @media (min-width: 1920px) {
 
     #splash-card {
-
         width: min(65%, 1000px);
-
     }
 
     #splash-titulo {
 
-        font-size: clamp(3.5rem, 4vw, 5rem);
+        font-size:
+            clamp(3.5rem, 4vw, 5rem);
 
     }
 
     #splash-mensaje {
 
-        font-size: clamp(1.3rem, 1.5vw, 1.8rem);
+        font-size:
+            clamp(1.3rem, 1.5vw, 1.8rem);
+
+    }
+
+    .jdi-splash-logo-container {
+
+        width: 140px;
+        height: 140px;
+
+        border-radius: 30px;
 
     }
 
 }
 
+
 /* ==========================================================
-   PANTALLAS CON POCA ALTURA
+   15. PANTALLAS CON POCA ALTURA
    ========================================================== */
 
 @media (max-height: 500px) {
 
     #splash-screen {
-
         padding: 10px;
-
     }
 
     #splash-card {
+        padding: 12px 20px;
+    }
 
-        padding: 15px 25px;
+    .jdi-splash-logo-container {
+
+        width: 76px;
+        height: 76px;
+
+        border-radius: 18px;
+
+        margin-bottom: 8px;
 
     }
 
     #splash-mensaje {
-
         margin-top: 8px;
-
     }
 
     #splash-progress-bar {
-
         margin-top: 12px;
+    }
 
+    #splash-titulo {
+        font-size: clamp(1.1rem, 4vw, 2rem);
     }
 
 }
 
+
 /* ==========================================================
-   ACCESIBILIDAD
-   La regla global ya existe en shell.css.
-   Aquí se conserva el comportamiento del splash.
+   16. ACCESIBILIDAD
    ========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -400,182 +578,16 @@
     }
 
     #splash-card {
-
         animation: none;
-
     }
 
-}
-
-/* ==========================================================
-   JDI - CORRECCIÓN RESPONSIVE MÓVILES
-   ========================================================== */
-
-/* SPLASH: TIEMPO DE PRESENTACIÓN */
-
-#splash-screen:not(.forzar-despedida) {
-    animation: autoOcultarSplash 5s ease forwards;
-}
-
-@keyframes autoOcultarSplash {
-
-    0%, 90% {
-        opacity: 1;
-        visibility: visible;
+    #splash-card > div:first-child {
+        animation: none;
     }
 
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-}
-
-/* TARJETA: EVITAR DESBORDAMIENTOS */
-
-#splash-card {
-    width: min(100%, 760px) !important;
-    max-width: 760px;
-
-    min-width: 0;
-
-    padding:
-        clamp(20px, 5vw, 55px)
-        clamp(12px, 5vw, 60px) !important;
-}
-
-/* NOMBRE COMPLETO EN UNA SOLA LÍNEA */
-
-#splash-titulo {
-    display: block;
-
-    width: 100%;
-
-    white-space: nowrap !important;
-
-    overflow: visible;
-
-    font-size:
-        clamp(1.05rem, 6.2vw, 3.8rem) !important;
-
-    letter-spacing:
-        clamp(0px, .25vw, 3px) !important;
-
-    line-height: 1.2;
-
-}
-
-/* TEXTO SECUNDARIO */
-
-#splash-mensaje {
-    font-size: clamp(.82rem, 2.5vw, 1.2rem);
-}
-
-/* BARRA DE PROGRESO */
-
-#splash-progress-bar > div {
-    animation-duration: 4s !important;
-}
-
-/* PANTALLAS MUY ESTRECHAS */
-
-@media (max-width: 360px) {
-
-    #splash-card {
-        padding: 24px 10px !important;
-    }
-
-    #splash-titulo {
-        font-size: clamp(1.05rem, 6vw, 1.35rem) !important;
-        letter-spacing: 0 !important;
-    }
-
-}
-
-/* PANTALLAS CON POCA ALTURA */
-
-@media (max-height: 500px) {
-
-    #splash-card {
-        padding: 12px 20px !important;
-    }
-
-    #splash-titulo {
-        font-size: clamp(1.1rem, 4vw, 2rem) !important;
-    }
-
-}
-/* IDENTIDAD VISUAL EN SPLASH Y DESPEDIDA */
-
-.jdi-splash-logo {
-    display: block;
-
-    width: clamp(42px, 9vw, 76px);
-    height: clamp(42px, 9vw, 76px);
-
-    object-fit: contain;
-
-    margin: 0 auto clamp(10px, 2vw, 18px);
-
-    filter:
-        drop-shadow(0 0 12px rgba(25,185,223,.25));
-}
-
-/* =========================================
-   JDI - LOGOTIPO SPLASH PREMIUM
-   ========================================= */
-
-.jdi-splash-logo-container {
-
-    width: 108px;
-    height: 108px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 3px;
-    box-sizing: border-box;
-
-    border-radius: 25px;
-
-    background: rgba(240,247,255,.98);
-
-    box-shadow:
-        0 0 30px rgba(25,185,223,.28),
-        0 8px 35px rgba(0,0,0,.30);
-
-    margin-bottom: 15px;
-
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.jdi-splash-logo {
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-    object-position: center;
-
-    padding: 0;
-    margin: 0;
-
-    max-width: none;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 480px) {
-
-    .jdi-splash-logo-container {
-        width: 100px;
-        height: 100px;
-        padding: 2px;
+    #splash-progress-bar > div {
+        animation: none;
+        left: 0;
     }
 
 }
