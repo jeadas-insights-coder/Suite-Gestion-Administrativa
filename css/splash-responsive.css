@@ -245,11 +245,10 @@
 }
 
 
-/* ==========================================================
-   07. LOGOTIPO JDI - DISEÑO PREMIUM
-   ========================================================== */
 
-/* CONTENEDOR DEL LOGOTIPO */
+/* ==========================================================
+   07. LOGOTIPO JDI - PRESENTACIÓN INTEGRADA
+   ========================================================== */
 
 .jdi-splash-logo-container {
 
@@ -265,36 +264,35 @@
 
     box-sizing: border-box;
 
-    padding: 2px;
-
+    padding: 0;
     margin: 0 auto 16px;
 
-    border-radius: 25px;
+    /* El SVG ya contiene su propio fondo */
 
-    background: rgba(240,247,255,.98);
+    background: transparent;
 
-    box-shadow:
-        0 0 35px rgba(25,185,223,.30),
-        0 0 65px rgba(138,61,166,.12),
-        0 8px 35px rgba(0,0,0,.30);
+    border: none;
+    border-radius: 0;
 
-    overflow: hidden;
+    box-shadow: none;
+
+    overflow: visible;
 
     flex-shrink: 0;
 
 }
 
-/* IMAGEN SVG */
+/* LOGOTIPO SVG */
 
 .jdi-splash-logo {
 
     display: block;
 
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
 
-    max-width: none;
-    max-height: none;
+    max-width: none !important;
+    max-height: none !important;
 
     padding: 0;
     margin: 0;
@@ -303,26 +301,76 @@
     object-position: center;
 
     filter:
-        drop-shadow(
-            0 0 8px rgba(25,185,223,.20)
-        );
+        drop-shadow(0 5px 12px rgba(25,185,223,.22));
 
 }
 
-/* EVITAR CONFLICTOS CON ESTILOS GLOBALES */
+/* TABLETS */
 
-.jdi-splash-logo-container img {
+@media (min-width: 481px) and (max-width: 1024px) {
 
-    width: 100%;
-    height: 100%;
-
-    max-width: none;
-
-    object-fit: contain;
+    .jdi-splash-logo-container {
+        width: 116px;
+        height: 116px;
+    }
 
 }
 
+/* COMPUTADORES */
 
+@media (min-width: 1025px) {
+
+    .jdi-splash-logo-container {
+        width: 124px;
+        height: 124px;
+    }
+
+}
+
+/* 4K */
+
+@media (min-width: 1920px) {
+
+    .jdi-splash-logo-container {
+        width: 140px;
+        height: 140px;
+    }
+
+}
+
+/* MÓVILES */
+
+@media (max-width: 480px) {
+
+    .jdi-splash-logo-container {
+        width: 104px;
+        height: 104px;
+    }
+
+}
+
+/* MÓVILES PEQUEÑOS */
+
+@media (max-width: 360px) {
+
+    .jdi-splash-logo-container {
+        width: 96px;
+        height: 96px;
+    }
+
+}
+
+/* PANTALLAS BAJAS */
+
+@media (max-height: 500px) {
+
+    .jdi-splash-logo-container {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 8px;
+    }
+
+}
 /* ==========================================================
    08. BARRA DE PROGRESO
    ========================================================== */
