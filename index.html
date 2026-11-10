@@ -228,13 +228,11 @@
     aria-live="polite"
 ></div>
 
-<!-- =====================================================
-     CONTROL DE VERSIÓN Y DESPEDIDA
-     ===================================================== -->
+<!-- CONTROL DE VERSIÓN Y DESPEDIDA -->
 
 <script>
 
-window.JDI_V = '2.0.1';
+window.JDI_V = '2.0.4';
 
 window.mostrarDespedida = function(
     urlRedireccion = 'index.html'
@@ -254,8 +252,6 @@ window.mostrarDespedida = function(
 
     if (!screen) return;
 
-    /* TRANSFORMAR SPLASH EN DESPEDIDA */
-
     if (titulo) {
         titulo.innerHTML = '¡Hasta pronto!';
     }
@@ -270,7 +266,6 @@ window.mostrarDespedida = function(
     if (bar) {
 
         bar.style.width = 'min(150px, 100%)';
-
         bar.style.margin = '30px auto 0';
 
         bar.innerHTML = `
@@ -288,11 +283,7 @@ window.mostrarDespedida = function(
         `;
     }
 
-    /* MOSTRAR DESPEDIDA */
-
     screen.classList.add('forzar-despedida');
-
-    /* REDIRECCIÓN */
 
     setTimeout(function() {
 
@@ -302,10 +293,10 @@ window.mostrarDespedida = function(
 
 };
 
+</script>
 
-<!-- =====================================================
-     REGISTRO PWA JEADAS.INSIGHTS
-     ===================================================== -->
+
+<!-- REGISTRO PWA JEADAS.INSIGHTS -->
 
 <script>
 
@@ -317,6 +308,7 @@ if ('serviceWorker' in navigator) {
             .register('./sw.js', {
                 scope: './'
             })
+
             .then(function(registration) {
 
                 console.log(
@@ -325,6 +317,7 @@ if ('serviceWorker' in navigator) {
                 );
 
             })
+
             .catch(function(error) {
 
                 console.error(
