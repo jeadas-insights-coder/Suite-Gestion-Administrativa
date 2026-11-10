@@ -365,14 +365,10 @@
    09. LUCES DECORATIVAS
    ========================================================== */
 
-#splash-screen > div {
-
+#splash-screen > div:not(#splash-card) {
     max-width: 100%;
-
     pointer-events: none;
-
 }
-
 
 /* ==========================================================
    10. MÓVILES PEQUEÑOS
